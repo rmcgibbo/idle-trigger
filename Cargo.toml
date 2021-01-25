@@ -1,0 +1,18 @@
+[package]
+name = "idle-trigger"
+version = "0.1.0"
+authors = ["Robert T. McGibbon <rmcgibbo@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+systemstat = "0.1.5"
+partial-min-max = "0.3.0"
+humantime = "2.1.0"
+serde = { version = "1.0", features = ["derive"] }
+toml = "0.5"
+clap = "2.33"
+
+[profile.release]
+opt-level = 'z'  # Optimize for size.
+lto = true
+

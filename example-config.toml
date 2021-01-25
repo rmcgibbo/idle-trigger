@@ -1,0 +1,15 @@
+# Measure CPU usage at measurement_interval
+measurement_interval = "1 sec"
+
+# Watch for the percent utilization to be below this threshold
+threshold_cpu_percent = 10.0
+
+# If it's below this threshold for a continuous stretch of
+# time of length `window`
+window = "10 sec"
+
+# Then execute this command as a shell script
+command = "echo hello"
+
+# And don't re-run the command more frequently than this
+cooldown = "1 min"
