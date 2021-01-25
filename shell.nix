@@ -34,10 +34,6 @@ pkgs.mkShell {
     pkgs.cargo-fuzz
     pkgs.gitAndTools.git-extras
     pkgs.gitAndTools.pre-commit
-    pkgs.mdsh
-    pkgs.openssl
-    pkgs.pkgconfig
-    pkgs.wasm-pack
     rust
   ];
 
