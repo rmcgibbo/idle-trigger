@@ -2,7 +2,7 @@
 
 pkgs.rustPlatform.buildRustPackage rec {
   name = "idle-trigger";
-  cargoSha256 = "0h1vgbx4y72x7bwf842i5ibnqkwkxd2kv687y01lnzg45dhdm0az";
+  cargoSha256 = "0s4162mxm2f1xra3p82w9vd82ihv7sfqwdpihb56d3y0fjw5381d";
   src = let
     filterSrcByPrefix = src: prefixList:
       pkgs.lib.cleanSourceWith {
