@@ -11,6 +11,9 @@ use std::{
 };
 use systemstat::{CPULoad, Platform, System};
 
+include!(concat!(env!("OUT_DIR"), "/config.rs"));
+
+
 #[derive(Deserialize, Debug)]
 pub struct Config {
     #[serde(deserialize_with = "deserialize_duration")]
@@ -68,7 +71,9 @@ fn main() -> Result<(), Box<dyn Error>> {
             );
 
             last_executed_cmd = Some(Instant::now());
-            Command::new("/bin/sh")
+            // BIN_SH_PATH is probably /bin/sh, configured into
+            // config.rs by build.rs and then included above
+            Command::new(BIN_SH_PATH)
                 .arg("-c")
                 .arg(config.command.clone())
                 .spawn()?;
