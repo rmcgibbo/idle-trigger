@@ -68,7 +68,7 @@ fn main() -> Result<(), Box<dyn Error>> {
             );
 
             last_executed_cmd = Some(Instant::now());
-            Command::new("sh")
+            Command::new("/bin/sh")
                 .arg("-c")
                 .arg(config.command.clone())
                 .spawn()?;
