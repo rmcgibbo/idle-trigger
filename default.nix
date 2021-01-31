@@ -12,5 +12,5 @@ pkgs.rustPlatform.buildRustPackage rec {
         inherit src;
       };
   in
-    filterSrcByPrefix ./. [ "Cargo.toml" "Cargo.lock" "src" ];
+    filterSrcByPrefix ./. [ "Cargo.toml" "Cargo.lock" "src" "build.rs" ];
 }
