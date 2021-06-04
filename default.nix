@@ -1,16 +1,10 @@
-{ pkgs ? import <nixpkgs> {}} :
-
-pkgs.rustPlatform.buildRustPackage rec {
-  name = "idle-trigger";
-  cargoSha256 = "0s4162mxm2f1xra3p82w9vd82ihv7sfqwdpihb56d3y0fjw5381d";
-  src = let
-    filterSrcByPrefix = src: prefixList:
-      pkgs.lib.cleanSourceWith {
-        filter = (path: type:
-          let relPath = pkgs.lib.removePrefix (toString ./. + "/") (toString path);
-          in pkgs.lib.any (prefix: pkgs.lib.hasPrefix prefix relPath) prefixList);
-        inherit src;
-      };
-  in
-    filterSrcByPrefix ./. [ "Cargo.toml" "Cargo.lock" "src" "build.rs" ];
-}
+(import (
+  let
+    lock = builtins.fromJSON (builtins.readFile ./flake.lock);
+  in fetchTarball {
+    url = "https://github.com/edolstra/flake-compat/archive/${lock.nodes.flake-compat.locked.rev}.tar.gz";
+    sha256 = lock.nodes.flake-compat.locked.narHash;
+  }
+) {
+  src =  ./.;
+}).defaultNix
