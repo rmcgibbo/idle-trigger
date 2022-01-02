@@ -53,6 +53,7 @@
               systemd.services.idle-trigger = {
                 enable = true;
                 description = "Idle trigger";
+                wantedBy = [ "multi-user.target" ];
                 serviceConfig = let
                   config_toml = pkgs.writeText "config.toml" ''
                     # See https://github.com/rmcgibbo/idle-trigger/blob/master/README.md
